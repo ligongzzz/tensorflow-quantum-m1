@@ -44,3 +44,5 @@ If you don't want to build tensorflow quantum by yourself, you can simply downlo
 If you have built it, cd into `/tmp/tfquantum/`.
 
 Then use `pip3 install tensorflow_quantum-0.5.0-cp38-cp38-macosx_11_0_arm64.whl` to install it.
+
+Now you can test it with the [tutorial](https://tensorflow.google.cn/quantum/overview) of tensorflow quantum.
