@@ -73,7 +73,7 @@ done
 
 
 # Check if it's installed
-if [[ $(pip show tensorflow) == *tensorflow* ]] || [[ $(pip show tf-nightly) == *tf-nightly* ]]; then
+if [[ $(pip show tensorflow_macos) == *tensorflow* ]] || [[ $(pip show tf-nightly) == *tf-nightly* ]]; then
   echo 'Using installed tensorflow'
 else
   # Uninstall CPU version if it is installed.
