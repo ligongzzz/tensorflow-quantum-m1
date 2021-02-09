@@ -9,7 +9,7 @@ This tutorial will teach you how to build and install [tensorflow quantum](https
 Firstly, you should install a virtual environment on your mac. You can use [miniforge](https://github.com/conda-forge/miniforge) to create a virtual environment with arm version of Python 3.8.
 
 ### Install Tensorflow for Mac OS
-[Click here](https://github.com/apple/tensorflow_macos/releases/download/v0.1alpha2/--autensorflow_macos-0.1alpha2.tar.gz) to download the latest version of tensorflow_macos. Unzip it and cd into the `arm64` folder.
+[Click here](https://github.com/apple/tensorflow_macos/releases/download/v0.1alpha2/tensorflow_macos-0.1alpha2.tar.gz) to download the latest version of tensorflow_macos. Unzip it and cd into the `arm64` folder.
 
 Activate the python environment you have just created. Use `pip install --no-dependencies xxx` to install all of the wheels, where `xxx` denotes the name of the packages in the folder.
 
