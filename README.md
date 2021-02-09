@@ -1,68 +1,46 @@
-![TensorFlow Quantum](./docs/images/logo/tf_quantum_circle.jpg)
+# Tensorflow Quantum for M1 Mac
+This tutorial will teach you how to build and install [tensorflow quantum](https://github.com/tensorflow/quantum) on M1 Mac.
 
----
+----
+# Install
 
-[TensorFlow Quantum](https://www.tensorflow.org/quantum) (TFQ) is a Python
-framework for hybrid quantum-classical machine learning that is primarily
-focused on modeling quantum data. TFQ is an application framework developed to
-allow quantum algorithms researchers and machine learning applications
-researchers to explore computing workflows that leverage Google’s quantum
-computing offerings, all from within TensorFlow.
+## Install Tensorflow for ARM Mac OS
+### Install Conda
+Firstly, you should install a virtual environment on your mac. You can use [miniforge](https://github.com/conda-forge/miniforge) to create a virtual environment with arm version of Python 3.8.
 
+### Install Tensorflow for Mac OS
+[Click here](https://github.com/apple/tensorflow_macos/releases/download/v0.1alpha2/tensorflow_macos-0.1alpha2.tar.gz) to download the latest version of tensorflow_macos. Unzip it and cd into the `arm64` folder.
 
-## Motivation
+Activate the python environment you have just created. Use `pip install --no-dependencies xxx` to install all of the wheels, where `xxx` denotes the name of the packages in the folder.
 
-Quantum computing at Google has hit an exciting milestone with the achievement
-of [Quantum Supremacy](https://www.nature.com/articles/s41586-019-1666-5).
-In the wake of this demonstration, Google is now turning its attention to
-developing and implementing new algorithms to run on its Quantum Computer
-that have real world [applications](https://ai.googleblog.com/2019/10/quantum-supremacy-using-programmable.html).
+## Build
+You can choose to build or download the built version of tensorflow-quantum.
+### Install Bazel for ARM Mac OS
+[Click here](https://github.com/erwincoumans/bazel/releases/download/bazel-3.7.1-mac-arm64/bazel-3.7.1-mac_arm64.zip) to download the built version of Bazel-3.7.1. __DO NOT__ install bazel directly through Homebrew. After downloading, move the unzipped file to `/usr/local/bin/`.
 
-To provide users with the tools they need to program and simulate a quantum
-computer, Google is working on [Cirq](https://github.com/quantumlib/Cirq). Cirq
-is designed for quantum computing researchers who are interested in running and
-designing algorithms that leverage existing (imperfect) quantum computers.
+### Clone this Repo
+You can choose to clone this repo or clone the official repo of tensorflow quantum. There are something you need to change in the official version.
 
-TensorFlow Quantum provides users with the tools they need to interleave quantum
-algorithms and logic designed in Cirq with the powerful and performant ML tools
-from TensorFlow. With this connection we hope to unlock new and exciting paths
-for Quantum Computing research that would not have otherwise been possible.
+- Change `3.1.0` to `3.7.1` in `.bazelversion`.
+- Remove `tensorflow==2.4.1` in `requirements.txt`.
+- Change `pip show tensorflow` to `pip show tensorflow-macos` in `configure.sh` (line 76).
 
+(If you use the code in this repo, you do not need to modify the above parts.)
 
-## Installation
+### Build
+Open Terminal and cd into the folder of this repo.
+```
+python3 -m pip install -r requirements.txt
+./configure.sh
 
-See the [installation instructions](https://github.com/tensorflow/quantum/blob/master/docs/install.md).
+bazel build -c opt --cxxopt="-O3" --cxxopt="-march=native" --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" release:build_pip_package
 
+bazel-bin/release/build_pip_package /tmp/tfquantum/
+```
 
-## Examples
+## Install
+If you don't want to build tensorflow quantum by yourself, you can simply download the built wheel from "Release" in this repo.
 
-All of our examples can be found here in the form of
-[Python notebook tutorials](https://github.com/tensorflow/quantum/tree/master/docs/tutorials)
+If you have built it, cd into `/tmp/tfquantum/`.
 
-
-## Report issues
-
-Report bugs or feature requests using the
-[TensorFlow Quantum issue tracker](https://github.com/tensorflow/quantum/issues).
-
-We also have a [Stack Overflow tag](https://stackoverflow.com/questions/tagged/tensorflow-quantum)
-for more general TFQ related discussions.
-
-In the meantime check out the [install instructions](./docs/install.md) to get
-the experimental code running!
-
-
-## Contributing
-
-We are eager to collaborate with you! TensorFlow Quantum is still a very young code base,
-if you have ideas for features that you would like added feel free to check out our
-[Contributor Guidelines](https://github.com/tensorflow/quantum/blob/master/CONTRIBUTING.md)
-to get started.
-
-
-## References
-
-If you use TensorFlow Quantum in your research, please cite:
-
-TensorFlow Quantum: A Software Framework for Quantum Machine Learning
-[arXiv:2003.02989, 2020](https://arxiv.org/abs/2003.02989).
+Then use `pip3 install tensorflow_quantum-0.5.0-cp38-cp38-macosx_11_0_arm64.whl` to install it.
