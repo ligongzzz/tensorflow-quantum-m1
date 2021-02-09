@@ -33,7 +33,7 @@ Open Terminal and cd into the folder of this repo.
 python3 -m pip install -r requirements.txt
 ./configure.sh
 
-bazel build -c opt --cxxopt="-O3" --cxxopt="-march=native" --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" release:build_pip_package
+bazel build -c opt --cxxopt="-O3" --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" release:build_pip_package
 
 bazel-bin/release/build_pip_package /tmp/tfquantum/
 ```
