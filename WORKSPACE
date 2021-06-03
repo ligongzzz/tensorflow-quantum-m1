@@ -60,16 +60,16 @@ http_archive(
 
 http_archive(
     name = "cirq",
-    sha256 = "418cb7ff9c223e1e32516ab0ccc578385734af833528d6f5d903260b322d3362",
-    strip_prefix = "Cirq-0.9.1",
-    urls = ["https://github.com/quantumlib/Cirq/archive/v0.9.1.zip"],
+    sha256 = "9241bd0a31bfe294f76071884fcb053c63abf2b5d311e7b7f0f4e20537cc7c43",
+    strip_prefix = "Cirq-0.11.0/cirq-google",
+    urls = ["https://github.com/quantumlib/Cirq/archive/v0.11.0.zip"],
 )
 
 http_archive(
     name = "qsim",
-    sha256 = "e2853379bde52d6277f9be4b80f54d32b3b27f7242a6c561cb34fb12d823b80e",
-    strip_prefix = "qsim-0.7.1-dev-20210126",
-    urls = ["https://github.com/quantumlib/qsim/archive/v0.7.1-dev+20210126.zip"],
+    sha256 = "d39b9c48866ce4d6a095093ae8059444d649e851219497af99e937a74f1e9a45",
+    strip_prefix = "qsim-0.9.2-dev-20210317",
+    urls = ["https://github.com/quantumlib/qsim/archive/v0.9.2-dev+20210317.zip"],
 )
 
 # Added for crosstool in tensorflow.

@@ -1,10 +1,8 @@
+load("@com_google_protobuf//:protobuf.bzl", "py_proto_library")
+
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
-
-load("@com_google_protobuf//:protobuf.bzl", "py_proto_library")
-
-# load("//tools/build_defs/proto/cpp:cc_proto_library.bzl", "cc_proto_library")
 
 # Export for the PIP package.
 exports_files(["__init__.py"])
@@ -12,7 +10,7 @@ exports_files(["__init__.py"])
 cc_proto_library(
     name = "program_cc_proto",
     deps = [
-        "@cirq//cirq/google/api/v2:program_proto",
+        "@cirq//cirq_google/api/v2:program_proto",
     ],
 )
 
